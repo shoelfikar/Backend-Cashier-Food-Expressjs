@@ -1,6 +1,7 @@
 const userModel = require('../models/user');
-const helpers = require('../helpers/helpers')
+const helpers = require('../helpers/helpers');
 const {genSaltSync,compareSync,hashSync} = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     getUsers: (req,res)=> {
@@ -24,6 +25,9 @@ module.exports = {
             password,
             image: 'https://cdn.clipart.email/b2f7a538d5d324b85f87c30fff789114_user-icon-clipart_600-600.svg',
             role: 'kasir',
+        }
+        if(req.body.username == '' || req.body.email == '' || req.body.password == ''){
+            helpers.response(res,null,404,'Data Belum Lengkap!, Silahkan Dilengkapi')
         }
         const salt = genSaltSync(10)
         data.password = hashSync(data.password,salt)
@@ -53,15 +57,16 @@ module.exports = {
                 email,
                 password
             }
+            result.token = jwt.sign({email: result.email, id: result.id_user}, process.env.SECRET_KEY)
             const results = compareSync(data.password,result.password)
             if(results){
                 helpers.response(res,result,200,'login sukses')
             }else{
-                helpers.response(res,null,404,'Your Password Wrong!')
+                helpers.response(res,null,403,'Your Password Wrong!')
             }
         })
         .catch((err)=> {
-            helpers.response(res,err,404, 'Your Email Not Found!')
+            helpers.response(res,err,404, 'Your Username Not Found!')
         })
     },
     userDetail: (req,res)=> {

@@ -6,14 +6,14 @@ module.exports = {
         const {
             name,
             price,
-            status,
+            // status,
             category
         } = req.body
         const data = {
             name,
             price,
             image: `http://localhost:7000/uploads/${req.file.filename}`,
-            status,
+            status: 1,
             category
         }
         menuModel.insertMenu(data)
@@ -87,6 +87,20 @@ module.exports = {
         })
         .catch((err)=> {
             helpers.response(res,err,404,'Data not Found!')
+        })
+    },
+    sortMenu:(req,res)=>{
+        const sort = req.params.sort
+        menuModel.sortMenu(sort)
+        .then((result)=>{
+            if(sort > 0){
+                helpers.response(res,err,404,'Keyword yang anda masukkan tidak sesuai') 
+            }else{
+                helpers.response(res,result,200,`Sort Data Berdasarkan ${sort}`)
+            }
+        })
+        .catch((err)=>{
+            helpers.response(res,err,404,'Keyword yang anda masukkan tidak sesuai')
         })
     }
 }

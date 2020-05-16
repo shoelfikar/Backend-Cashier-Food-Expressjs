@@ -20,6 +20,7 @@ const upload = multer({
 
 Router
     .get('/', menuController.getMenu)
+    .get('/sort/:sort', menuController.sortMenu)
     .get('/:id_menu', menuController.menuDetail)
     .post('/data',upload.single('image'),menuController.insertMenu)
     .patch('/:id_menu', upload.single('image'),menuController.updateMenu)

@@ -66,5 +66,18 @@ module.exports = {
                 }
             })
         })
+    },
+    sortMenu:(sort)=>{
+        return new Promise((resolve,reject)=> {
+            connection.query(
+                `SELECT * FROM menu ORDER BY ${sort} ASC`, (err,result)=> {
+                    if(!err){
+                        resolve(result)
+                    }else{
+                        reject(new Error(err))
+                    }
+                }
+            )
+        })
     }
 }

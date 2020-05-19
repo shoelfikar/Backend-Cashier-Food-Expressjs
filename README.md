@@ -1,8 +1,8 @@
-<h2 align="center">Backend-book-library-expressjs</h2>
+<h2 align="center">Backend-Cashier-Food-Expressjs</h2>
 
 
 
-![abcd](https://img.shields.io/badge/Code%20Style-Standard-green) [![Release Version](https://img.shields.io/badge/release-v.1.0-blue)](https://github.com/shoelfikar/Backend-book-library-expressjs/releases/tag/1.0) [![Node JS](https://img.shields.io/badge/Dependencies-Express%20JS-green)](https://nodejs.org/en/)
+![abcd](https://img.shields.io/badge/Code%20Style-Standard-green) [![Release Version](https://img.shields.io/badge/release-v.1.0-blue)](https://github.com/shoelfikar/Backend-Cashier-Food-Expressjs/releases/tag/1.0) [![Node JS](https://img.shields.io/badge/Dependencies-Express%20JS-green)](https://nodejs.org/en/)
 
 
 <p align="center">
@@ -33,8 +33,8 @@
 ## Installation
 ### Clone
 ```
-$ git clone https://github.com/shoelfikar/Backend-book-library-expressjs.git
-$ cd Backend-book-library-expressjs
+$ git clone https://github.com/shoelfikar/Backend-Cashier-Food-Expressjs.git
+$ cd Backend-Cashier-Food-Expressjs
 $ npm install
 ```
 
@@ -99,10 +99,6 @@ $ npm start
 +---package.json
 ```
 
-### About Project 
-
-  Membuat REST API untuk perpustakaan online menggunakan express js
-
 
 ## Contributing
 
@@ -116,14 +112,14 @@ Fork the Project
 
 ## Related Project
 
-* [`Frontend-mylibrary-online-vuejs`](https://github.com/shoelfikar/Frontend-mylibrary-online-vuejs)
-* [`Backend-book-library-expressjs`](https://github.com/shoelfikar/Backend-book-library-expressjs)
+* [`Frontend-Cashier-Food-vuejs`](https://github.com/shoelfikar/Frontend-Cashier-Food-vuejs)
+* [`Backend-Cashier-Food-Expressjs`](https://github.com/shoelfikar/Backend-Cashier-Food-Expressjs)
 
 ## Contact
 
 My Email : sulfikardi25@gmail.com
 
-Project Link: [Backend-book-library-expressjs](https://github.com/shoelfikar/Backend-book-library-expressjs)
+Project Link: [Backend-Cashier-Food-Expressjs](https://github.com/shoelfikar/Backend-Cashier-Food-Expressjs)
 
 
 ---

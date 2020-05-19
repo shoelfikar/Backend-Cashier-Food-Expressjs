@@ -1,7 +1,10 @@
 <h2 align="center">Backend-Cashier-Food-Expressjs</h2>
 
 
-
+![GitHub repo size](https://img.shields.io/github/repo-size/shoelfikar/Backend-Cashier-Food-Expressjs)
+![GitHub contributors](https://img.shields.io/github/contributors/shoelfikar/Backend-Cashier-Food-Expressjs)
+![GitHub stars](https://img.shields.io/github/stars/shoelfikar/Backend-Cashier-Food-Expressjs?style=social)
+![GitHub forks](https://img.shields.io/github/forks/shoelfikar/Backend-Cashier-Food-Expressjs?style=social)
 ![abcd](https://img.shields.io/badge/Code%20Style-Standard-green) [![Release Version](https://img.shields.io/badge/release-v.1.0-blue)](https://github.com/shoelfikar/Backend-Cashier-Food-Expressjs/releases/tag/1.0) [![Node JS](https://img.shields.io/badge/Dependencies-Express%20JS-green)](https://nodejs.org/en/)
 
 

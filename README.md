@@ -20,7 +20,6 @@
 * [Start Development Server](#Start-Development-Server)
 * [Link Collection Postman](#Link-Collection-Postman)
 * [Structur Folder](#Structur-Folder)
-* [About Project](#About-Project)
 * [Contributing](#Contributing)
 * [Related Project](#Related-Project)
 * [Contact](#Contact)
@@ -69,7 +68,7 @@ PORT_REDIS=YOUR_PORT_REDIS / default => 6379
 $ npm start
 ```
 ## Link Collection Postman
-[Postman](https://www.getpostman.com/collections/5a776822917b6c04128a)
+[Postman](https://www.getpostman.com/collections/1bae302eaba21766cfde)
 
 ## Structur Folder
 ```
@@ -77,22 +76,19 @@ $ npm start
 |    \---Configs
 |    |   +---db.js            
 |    \---controllers
-|    |   +---books.js
+|    |   +---menu.js
 |    |   +---category.js
-|    |   +---loanbooks.js
 |    |   +---user.js
 |    \---helpers
 |    |   +---helpers.js
 |    \---models
-|    |   +---books.js
+|    |   +---menu.js
 |    |   +---category.js
-|    |   +---loanbooks.js
 |    |   +---user.js
 |    \---routers
-|    |   +---books.js
+|    |   +---menu.js
 |    |   +---category.js
 |    |   +---index.js
-|    |   +---loanbooks.js
 |    |   +---user.js
 +---app.js
 +---package-lock.json

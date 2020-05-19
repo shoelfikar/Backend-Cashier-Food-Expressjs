@@ -15,7 +15,6 @@
 
 * [Prerequiste](#Prerequiste)
 * [Installation](#Installation)
-* [Installation](#Installation)
 * [Create Environment Variable](#create-environment-variable)
 * [Start Development Server](#Start-Development-Server)
 * [Link Collection Postman](#Link-Collection-Postman)

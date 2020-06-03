@@ -1,6 +1,6 @@
 const userModel = require('../models/user');
 const helpers = require('../helpers/helpers');
-const {genSaltSync,compareSync,hashSync} = require('bcrypt');
+const {genSaltSync,compareSync,hashSync} = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 module.exports = {

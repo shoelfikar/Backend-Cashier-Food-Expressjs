@@ -10,10 +10,10 @@ module.exports = {
             helpers.response(res,result,200,'Data Semua User')
         })
         .catch((err)=> {
-            helpers.response(res,null, 500,'Something wrong!')
+            helpers.response(err,null, 500,'Something wrong!')
         })
     },
-    insertUsers: (req,res)=> {
+    insertUsers: (req,res)=>{
         const {
             username,
             email,
@@ -32,10 +32,10 @@ module.exports = {
         const salt = genSaltSync(10)
         data.password = hashSync(data.password,salt)
         userModel.insertUsers(data)
-        .then((result)=> {
+        .then((result)=>{
             helpers.response(res,result,200,'User berhasil dibuat')
         })
-        .catch((err)=> {
+        .catch((err)=>{
             helpers.response(res,err,404,'Something wrong!')
         })
     },

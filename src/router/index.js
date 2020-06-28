@@ -2,6 +2,7 @@ const express = require('express');
 const users = require('./user')
 const menu = require('./menu')
 const category = require('./category')
+const detail = require('./transaksi_detail')
 
 
 
@@ -13,6 +14,7 @@ Router
     .use('/user', users)
     .use('/menu', menu)
     .use('/category',category)
+    .use('/detail', detail)
     .get('/', function (req, res){
     res.send({
         message: 'Welcome to my API',

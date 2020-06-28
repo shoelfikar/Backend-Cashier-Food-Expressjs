@@ -12,7 +12,7 @@ module.exports = {
         const data = {
             name,
             price,
-            image: `http://localhost:7000/uploads/${req.file.filename}`,
+            image: `http://${req.get('host')}/uploads/${req.file.filename}`,
             status: 1,
             category
         }

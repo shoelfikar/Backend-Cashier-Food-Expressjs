@@ -7,7 +7,20 @@ const createTrx = (data)=> {
       if(!err){
         resolve(result)
       }else{
-        reject(err)
+        reject(new Error (err))
+      }
+    })
+  })
+}
+
+
+const getInvoice = (invoice)=> {
+  return new Promise((resolve, reject)=> {
+    db.query('SELECT transaksi.*,transaksi_detail.id_produk, transaksi_detail.produk_name, transaksi_detail.harga, transaksi_detail.qty, transaksi_detail.no_ppn, users.username FROM transaksi INNER JOIN transaksi_detail ON transaksi.invoice = transaksi_detail.invoice INNER JOIN users ON users.id_user = transaksi.id_user WHERE transaksi.invoice = ?', invoice, (err, result)=> {
+      if(!err){
+        resolve(result)
+      }else{
+        reject(new Error(err))
       }
     })
   })
@@ -16,5 +29,6 @@ const createTrx = (data)=> {
 
 
 module.exports = {
-  createTrx
+  createTrx,
+  getInvoice
 }

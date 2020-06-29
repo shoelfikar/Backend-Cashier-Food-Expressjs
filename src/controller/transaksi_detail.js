@@ -9,8 +9,6 @@ module.exports = {
       helpers.response(res, result, 200, 'success', null)
     })
     .catch(err => {
-      console.log(data)
-      console.log(err)
       helpers.response(res, null, 403, 'failed', err)
     })
   }

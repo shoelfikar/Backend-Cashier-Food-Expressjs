@@ -14,6 +14,7 @@ app.use(morgan('combined'))
 const Router = require('./src/router/index');
 app.use('/api/v1/pos',Router)
 app.use('/uploads',express.static('./uploads'))
+app.use('/uploads/file',express.static('./uploads/file'))
 
 
 app.listen(port, ()=> {

@@ -57,7 +57,7 @@ const sendInvoice = (req, res)=> {
       html: `<h4>dkasir-pos-app Invoice</h4>`,
       attachments: [{
         filename: `${data.invoice}.pdf`,
-        path: `C:/Users/SHOEL/Downloads/${data.invoice}.pdf`,
+        path: `./uploads/file/${data.invoice}.pdf`,
         contentType: 'application/pdf'
       }],
     }

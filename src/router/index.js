@@ -4,6 +4,7 @@ const menu = require('./menu')
 const category = require('./category')
 const detail = require('./transaksi_detail')
 const transaksi = require('./transaksi')
+const history = require('./history')
 
 
 
@@ -17,6 +18,7 @@ Router
     .use('/category',category)
     .use('/detail', detail)
     .use('/transaksi', transaksi)
+    .use('/history', history)
     .get('/', function (req, res){
     res.send({
         message: 'Welcome to my API',

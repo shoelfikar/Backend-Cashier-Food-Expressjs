@@ -32,13 +32,15 @@ const createTrx = (req, res)=> {
 
 
 const getInvoice = (req, res)=> {
-  const invoice = req.query.invoice
+  // const invoice = req.query.invoice
   // const {email} = req.body
-  trxModels.getInvoice(invoice)
+  trxModels.getInvoice()
     .then(result => {
+      console.log(result)
       helpers.response(res, result, 200, 'success', null)
     })
     .catch(err => {
+      console.log(err)
       helpers.response(res, null, 500, 'failed', err)
     })
 }

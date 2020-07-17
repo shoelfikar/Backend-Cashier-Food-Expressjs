@@ -7,10 +7,10 @@ module.exports = {
     getUsers: (req,res)=> {
         userModel.getUsers()
         .then((result)=> {
-            helpers.response(res,result,200,'Data Semua User')
+            helpers.response(res,result,200,'Data Semua User', null)
         })
         .catch((err)=> {
-            helpers.response(err,null, 500,'Something wrong!')
+            helpers.response(res,null, 500,'Something wrong!', err)
         })
     },
     insertUsers: (req,res)=>{
@@ -27,16 +27,16 @@ module.exports = {
             role: 'kasir',
         }
         if(req.body.username == '' || req.body.email == '' || req.body.password == ''){
-            helpers.response(res,null,404,'Data Belum Lengkap!, Silahkan Dilengkapi')
+            helpers.response(res,null,404,'Data Belum Lengkap!, Silahkan Dilengkapi', null)
         }
         const salt = genSaltSync(10)
         data.password = hashSync(data.password,salt)
         userModel.insertUsers(data)
         .then((result)=>{
-            helpers.response(res,result,200,'User berhasil dibuat')
+            helpers.response(res,result,200,'User berhasil dibuat', null)
         })
         .catch((err)=>{
-            helpers.response(res,err,404,'Something wrong!')
+            helpers.response(res,null,500,'Something wrong!', err)
         })
     },
     login: (req,res)=> {
@@ -60,13 +60,13 @@ module.exports = {
             result.token = jwt.sign({email: result.email, id: result.id_user}, process.env.SECRET_KEY)
             const results = compareSync(data.password,result.password)
             if(results){
-                helpers.response(res,result,200,'login sukses')
+                helpers.response(res,result,200,'login sukses', null)
             }else{
-                helpers.response(res,null,403,'Your Password Wrong!')
+                helpers.response(res,null,403,'Your Password Wrong!', null)
             }
         })
         .catch((err)=> {
-            helpers.response(res,err,404, 'Your Username Not Found!')
+            helpers.response(res,null,500, 'Something Wrong!', err)
         })
     },
     userDetail: (req,res)=> {
@@ -74,13 +74,13 @@ module.exports = {
         userModel.userDetail(idUser)
         .then((result)=> {
             if(result.length == 0){
-                helpers.response(res,result,404,`id user: ${idUser} tidak ditemukan!`)
+                helpers.response(res,result,404,`id user: ${idUser} tidak ditemukan!`, null)
             }else{
-                helpers.response(res,result,200,'Data User Detail')
+                helpers.response(res,result,200,'Data User Detail', null)
             }          
         })
         .catch((err)=> {
-            helpers.response(res,err,404,'Data tidak ditemukan')
+            helpers.response(res,null,500,'Something Wrong!', err)
         })
     },
     deleteUsers: (req,res)=> {
@@ -88,14 +88,14 @@ module.exports = {
         userModel.deleteUsers(iduser)
         .then((result)=>{
             if(result.affectedRows ==0){
-                helpers.response(res,result,404,`id user: ${iduser} tidak ditemukan!`)
+                helpers.response(res,result,404,`id user: ${iduser} tidak ditemukan!`, null)
             }else{
                 helpers.response(res,result,200,`id user: ${iduser} berhasil dihapus`)
             }
             
         })
         .catch((err)=> {
-            helpers.response(res,err,404,'Data not Found!')
+            helpers.response(res,null,404,'Data not Found!', err)
         })
     },
     updateUsers: (req,res)=> {
@@ -121,7 +121,7 @@ module.exports = {
             }
         })
         .catch((err)=>{
-            helpers.response(res,err,404,'something wrong!')
+            helpers.response(res,null,500,'something wrong!', err)
         })
     }
 }

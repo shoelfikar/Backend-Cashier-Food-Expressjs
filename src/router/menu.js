@@ -2,6 +2,7 @@ const express = require('express');
 const Router = express.Router()
 const menuController = require('../controller/menu');
 const multer = require('multer');
+const cahce = require('../helpers/caching')
 
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
@@ -19,10 +20,10 @@ const upload = multer({
 
 
 Router
-    .get('/', menuController.getMenu)
+    .get('/',cahce.getCache, menuController.getMenu)
     .get('/sort/:sort', menuController.sortMenu)
     .get('/:id_menu', menuController.menuDetail)
-    .post('/data',upload.single('image'),menuController.insertMenu)
+    .post('/data',cahce.delCache, upload.single('image'),menuController.insertMenu)
     .patch('/:id_menu', upload.single('image'),menuController.updateMenu)
     .delete('/:id_menu', menuController.deleteMenu)
     

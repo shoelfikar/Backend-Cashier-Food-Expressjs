@@ -1,12 +1,12 @@
 const menuModel = require('../models/menu');
 const helpers = require('../helpers/helpers');
+const redis = require('../config/redis').client;
 
 module.exports = {
     insertMenu: (req,res)=> {
         const {
             name,
             price,
-            // status,
             category
         } = req.body
         const data = {
@@ -14,24 +14,27 @@ module.exports = {
             price,
             image: `http://${req.get('host')}/uploads/${req.file.filename}`,
             status: 1,
-            category
+            category,
+            count: 1
         }
         menuModel.insertMenu(data)
         .then((result)=>{
-            helpers.response(res,result,200,'Data Menu Berhasil ditambahkan')
+            helpers.response(res,result,200,'Data Menu Berhasil ditambahkan', null)
         })
         .catch((err)=>{
-            helpers.response(res,err,404,'Something Wrong!, Please Check Your Server')
+            helpers.response(res,null,500,'Something Wrong!, Please Check Your Server', err)
         })
     },
     getMenu:(req, res)=>{
         const search = req.query.search
         menuModel.getMenu(search)
         .then((result)=> {
-            helpers.response(res,result,200,'Data Semua Menu')
+            const data = JSON.stringify(result)
+            redis.setex('allMenu', 3600, data)
+            helpers.response(res,result,200,'Data Semua Menu', null)
         })
         .catch((err)=> {
-            helpers.response(res,err,500,'Something Wrong!, Please Check Your Server')
+            helpers.response(res,null,500,'Something Wrong!, Please Check Your Server', err)
         })
     },
     menuDetail:(req,res)=>{
@@ -39,13 +42,13 @@ module.exports = {
         menuModel.menuDetail(idMenu)
         .then((result)=>{
             if(result.length == 0){
-                helpers.response(res,result,404,`id user: ${idMenu} tidak ditemukan!`)
+                helpers.response(res,null,404,`id user: ${idMenu} tidak ditemukan!`, err)
             }else{
-                helpers.response(res,result,200,'Data User Detail')
+                helpers.response(res,result,200,'Data User Detail', null)
             }          
         })
         .catch((err)=> {
-            helpers.response(res,err,500,'Something Wrong!, Please Check Your Server')
+            helpers.response(res,null,500,'Something Wrong!, Please Check Your Server', err)
         })
     },
     updateMenu:(req,res)=>{
@@ -66,13 +69,13 @@ module.exports = {
         menuModel.updateMenu(idMenu,data)
         .then((result)=>{
             if(result.affectedRows ==0){
-                helpers.response(res,result,404,`id user: ${idMenu} tidak ditemukan!`)
+                helpers.response(res,null,404,`id user: ${idMenu} tidak ditemukan!`, err)
             }else{
-                helpers.response(res,result,200,`id user: ${idMenu} berhasil update`)
+                helpers.response(res,result,200,`id user: ${idMenu} berhasil update`, null)
             }
         })
         .catch((err)=>{
-            helpers.response(res,err,404,'something wrong!')
+            helpers.response(res,null,500,'something wrong!', err)
         })
     },
     deleteMenu: (req,res)=>{
@@ -80,13 +83,13 @@ module.exports = {
         menuModel.deleteMenu(idMenu)
         .then((result)=>{
             if(result.affectedRows ==0){
-                helpers.response(res,result,404,`Menu Dengan Id: ${idMenu} tidak ditemukan!`)
+                helpers.response(res,null,404,`Menu Dengan Id: ${idMenu} tidak ditemukan!`, err)
             }else{
-                helpers.response(res,result,200,`Menu Dengan Id: ${idMenu} berhasil dihapus`)
+                helpers.response(res,result,200,`Menu Dengan Id: ${idMenu} berhasil dihapus`, null)
             }
         })
         .catch((err)=> {
-            helpers.response(res,err,404,'Data not Found!')
+            helpers.response(res,null,500,'something wrong!', err)
         })
     },
     sortMenu:(req,res)=>{
@@ -94,13 +97,13 @@ module.exports = {
         menuModel.sortMenu(sort)
         .then((result)=>{
             if(sort > 0){
-                helpers.response(res,err,404,'Keyword yang anda masukkan tidak sesuai') 
+                helpers.response(res,null,404,'Keyword yang anda masukkan tidak sesuai', err) 
             }else{
-                helpers.response(res,result,200,`Sort Data Berdasarkan ${sort}`)
+                helpers.response(res,result,200,`Sort Data Berdasarkan ${sort}`, null)
             }
         })
         .catch((err)=>{
-            helpers.response(res,err,404,'Keyword yang anda masukkan tidak sesuai')
+            helpers.response(res,null,500,'something wrong!', err)
         })
     }
 }

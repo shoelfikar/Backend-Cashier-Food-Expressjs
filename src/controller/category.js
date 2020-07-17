@@ -11,10 +11,10 @@ module.exports = {
         }
         categoryModel.insertCat(data)
         .then((result)=>{
-            helpers.response(res,result,200, 'Data Category Berhasil Ditambahkan')
+            helpers.response(res,result,200, 'Data Category Berhasil Ditambahkan', null)
         })
         .catch((err)=>{
-            helpers.response(res,err,500, 'Something Wrong!, Please Check Your Server')
+            helpers.response(res,null,500, 'Something Wrong!, Please Check Your Server', err)
         })
     },
     getCat:(req,res)=>{
@@ -22,15 +22,15 @@ module.exports = {
         categoryModel.getCat(search)
         .then((result)=>{
             if(result.length == 0){
-                helpers.response(res,result,203, 'Data Tidak Ditemukan')
+                helpers.response(res,null,404, 'Data Tidak Ditemukan', err)
             }else if(search){
-                helpers.response(res,result,200, `Jumlah Data Yang Ditemukan Adalah : ${result.length}`)
+                helpers.response(res,result,200, `Jumlah Data Yang Ditemukan Adalah : ${result.length}`, null)
             }else{
-                helpers.response(res,result,200, `Data Semua Category dan Total Data: ${result.length}`)
+                helpers.response(res,result,200, `Data Semua Category dan Total Data: ${result.length}`, null)
             } 
         })
         .catch((err)=>{
-            helpers.response(res,err,500, 'Something Wrong!, Please Check Your Server')
+            helpers.response(res,null,500, 'Something Wrong!, Please Check Your Server', err)
         })
     },
     detailCat:(req,res)=>{
@@ -38,13 +38,13 @@ module.exports = {
         categoryModel.detailCat(category)
         .then((result)=>{
             if(result.length == 0){
-                helpers.response(res,result,403, `id category : ${category} tidak ditemukan`)
+                helpers.response(res,result,404, `id category : ${category} tidak ditemukan`, null)
             }else{
-                helpers.response(res,result,200, 'data category detail')
+                helpers.response(res,result,200, 'data category detail', null)
             }
         })
         .catch((err)=>{
-            helpers.response(res,err,500, 'something wrong!, please check your server')
+            helpers.response(res,null,500, 'something wrong!, please check your server', err)
         })
     },
     updateCat:(req, res)=>{
@@ -58,13 +58,13 @@ module.exports = {
         categoryModel.updateCat(category,data)
         .then((result)=>{
             if(result.affectedRows == 0){
-                helpers.response(res,result,403, `id category: ${category} tidak ditemukan`)
+                helpers.response(res,result,404, `id category: ${category} tidak ditemukan`, null)
             }else{
-                helpers.response(res,result,200, `id category: ${category} berhasil di update`)
+                helpers.response(res,result,200, `id category: ${category} berhasil di update`, null)
             }
         })
         .catch((err)=>{
-            helpers.response(res,err,500, 'something wrong!, please check your server')
+            helpers.response(res,null,500, 'something wrong!, please check your server', err)
         })
     }
 }

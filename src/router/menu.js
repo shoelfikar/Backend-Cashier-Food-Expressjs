@@ -24,8 +24,8 @@ Router
     .get('/sort/:sort', menuController.sortMenu)
     .get('/:id_menu', menuController.menuDetail)
     .post('/data',cahce.delCache, upload.single('image'),menuController.insertMenu)
-    .patch('/:id_menu', upload.single('image'),menuController.updateMenu)
-    .delete('/:id_menu', menuController.deleteMenu)
+    .patch('/:id_menu',cahce.delCache, upload.single('image'),menuController.updateMenu)
+    .delete('/:id_menu',cahce.delCache, menuController.deleteMenu)
     
 
 

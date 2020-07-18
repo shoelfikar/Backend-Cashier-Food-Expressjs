@@ -25,12 +25,12 @@ Router
         about: 'POS-APP v1',
         author: 'sulfikardi',
         linkEndPoint: {
-            menu : 'api.sulfikardi.my.id/menu',
-            user : 'api.sulfikardi.my.id/user',
-            category : 'api.sulfikardi.my.id/category',
-            DetailTransaksi : 'api.sulfikardi.my.id/detail',
-            transaksi : 'api.sulfikardi.my.id/transaksi',
-            history : 'api.sulfikardi.my.id/history'
+            menu : 'https://api1.sulfikardi.my.id/menu',
+            user : 'https://api1.sulfikardi.my.id/user',
+            category : 'https://api1.sulfikardi.my.id/category',
+            DetailTransaksi : 'https://api1.sulfikardi.my.id/detail',
+            transaksi : 'https://api1.sulfikardi.my.id/transaksi',
+            history : 'https://api1.sulfikardi.my.id/history'
         }
     })
 })

@@ -24,7 +24,14 @@ Router
         message: 'Welcome to my API',
         about: 'POS-APP v1',
         author: 'sulfikardi',
-        thanks:'Thanks for visit my API'
+        linkEndPoint: {
+            menu : 'api.sulfikardi.my.id/menu',
+            user : 'api.sulfikardi.my.id/user',
+            category : 'api.sulfikardi.my.id/category',
+            DetailTransaksi : 'api.sulfikardi.my.id/detail',
+            transaksi : 'api.sulfikardi.my.id/transaksi',
+            history : 'api.sulfikardi.my.id/history'
+        }
     })
 })
 module.exports = Router;

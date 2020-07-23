@@ -15,8 +15,8 @@ app.use(cors())
 app.use(morgan('combined'))
 const Router = require('./src/router/index');
 app.use('/api/v1/pos',Router)
-app.use('/uploads',express.static('./uploads'))
-app.use('/uploads/file',express.static('./uploads/file'))
+app.use('/api/v1/pos/uploads',express.static('./uploads'))
+app.use('/api/v1/pos/uploads/file',express.static('./uploads/file'))
 
 
 redis.redisCheck()
